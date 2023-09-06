@@ -1,0 +1,19 @@
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          azure:
+            client-id:
+            client-secret:
+            authorization-grant-type: authorization_code
+            scope: openid,profile
+            redirect-uri: http://localhost:8080/login/oauth2/code/callback
+        provider:
+          azure:
+            authorization-uri:
+            token-uri:
+            user-info-uri: https://www.google.com
+            user-name-attribute: preferred_username
+            jwk-set-uri:
