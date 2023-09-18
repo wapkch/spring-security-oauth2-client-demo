@@ -1,19 +1,45 @@
-
 spring:
   security:
+#    user:
+#      name: user1
+#      password: password
     oauth2:
+#      authorizationserver:
+#        client:
+#          messaging-client:
+#            registration:
+#              client-id: "messaging-client"
+#              client-secret: "{noop}secret"
+#              client-authentication-methods:
+#                - "client_secret_basic"
+#              authorization-grant-types:
+#                - "authorization_code"
+#                - "refresh_token"
+#                - "client_credentials"
+#              redirect-uris:
+#                - "http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc"
+#                - "http://127.0.0.1:8080/authorized"
+#                - "http://127.0.0.1:8080/login/oauth2/code/callback"
+#              post-logout-redirect-uris:
+#                - "http://127.0.0.1:8080/logged-out"
+#              scopes:
+#                - "openid"
+#                - "profile"
+#                - "message.read"
+#                - "message.write"
+#            require-authorization-consent: false
       client:
         registration:
-          azure:
-            client-id:
-            client-secret:
+          messaging-client-oidc:
+            client-id: "messaging-client"
+            client-secret: secret
             authorization-grant-type: authorization_code
             scope: openid,profile
-            redirect-uri: http://localhost:8080/login/oauth2/code/callback
+            redirect-uri: http://127.0.0.1:8080/login/oauth2/code/callback
         provider:
-          azure:
-            authorization-uri:
-            token-uri:
-            user-info-uri: https://www.google.com
+          messaging-client-oidc:
+            authorization-uri: http://127.0.0.1:8080/oauth2/authorize
+            token-uri: http://127.0.0.1:8080/oauth2/token
+            user-info-uri: https://www.bing.com
             user-name-attribute: preferred_username
-            jwk-set-uri:
+            jwk-set-uri: http://127.0.0.1:8080/oauth2/jwks

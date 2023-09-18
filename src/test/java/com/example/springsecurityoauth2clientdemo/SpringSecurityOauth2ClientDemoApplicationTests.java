@@ -1,13 +1,13 @@
 package com.example.springsecurityoauth2clientdemo;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.SpringApplication;
 
-@SpringBootTest
 class SpringSecurityOauth2ClientDemoApplicationTests {
 
-    @Test
-    void contextLoads() {
+    public static void main(String[] args) {
+        SpringApplication.from(SpringSecurityOauth2ClientDemoApplication::main)
+            .with(MyContainersConfiguration.class)
+            .run(args);
     }
 
 }
